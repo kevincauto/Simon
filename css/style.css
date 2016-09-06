@@ -1,0 +1,26 @@
+.outer{
+  margin: auto;
+  padding: 10px;
+  margin: 10px;
+  border: solid 10px;
+  border-radius: 50%;
+  height: 600px;
+  width: 600px;
+  vertical-align: middle;
+  background-color: #111;
+}
+.inner{
+  padding: 10px;
+  margin: auto;
+  margin-top: 75px;
+  border: solid 10px;
+  border-radius: 50%;
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #eee;
+}
+.labels{
+  display: inline;
+}
