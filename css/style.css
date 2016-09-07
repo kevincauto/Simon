@@ -1,20 +1,29 @@
-.inner{
+@import url("toggle.css");
+h1{
+  font: #000;
+}
 
+.inner{
+  padding-top: 12px;
+  position:fixed;
+  top: 120px; left:115px;
   border: solid 20px;
   border-radius: 50%;
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   text-align: center;
   vertical-align: middle;
-  background-color: #eee;
+  background-color: #ddd;
 }
 .labels{
   display: inline;
 }
 input[type=text] {
-  width: 30px;
+  width: 60px;
   text-align: center;
-  background-color: red;
+  background-color: #660000;
+  font-size:30px;
+  font: red;
 }
 .absolute-center {
   margin: auto;
@@ -22,42 +31,54 @@ input[type=text] {
   top: 0; left: 0; bottom: 0; right: 0;
 }
 .red{
-  background-color: red;
-  height:290px;
-  width:290px;
-  border-top-left-radius: 100%;
+  position:absolute;
+  top: 10px; left:0;
+  background-color: #660000;
+  height:250px;
+  width:250px;
+  border-top-left-radius: 95%;
   border: solid;
   border-width: 20px;
   display: inline-block;
   margin-right:0px;
+
 }
 .blue{
-  background-color: blue;
-  height:290px;
-  width:290px;
-  border-top-right-radius: 100%;
+  position:absolute;
+  top: 10px; left:230px;
+  background-color: #000066;
+  height:250px;
+  width:250px;
+  border-top-right-radius: 95%;
   border: solid;
   border-width: 20px;
   display: inline-block;
 }
 .yellow{
-  background-color: yellow;
-  height:290px;
-  width:290px;
-  border-bottom-left-radius: 100%;
+  position:absolute;
+  top: 240px; left:0px;
+  background-color: #666600;
+  height:250px;
+  width:250px;
+  border-bottom-left-radius: 95%;
   border: solid;
   border-width: 20px;
   display: inline-block;
 }
 .green{
-  background-color: green;
-  height:290px;
-  width:290px;
-  border-bottom-right-radius: 100%;
+  position:absolute;
+  top: 240px; left:230px;
+  background-color: #006600;
+  height:250px;
+  width:250px;
+  border-bottom-right-radius: 95%;
   border: solid;
   border-width: 20px;
   display: inline-block;
 }
 .holder{
-  margin-top: 28px;
+  width:512px;
+  height:512px;
+  postion: absolute;
+  left:250px;
 }
