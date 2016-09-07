@@ -19,7 +19,7 @@ h1{
   display: inline;
 }
 input[type=text] {
-  width: 60px;
+  width: 120px;
   text-align: center;
   background-color: #660000;
   font-size:30px;
