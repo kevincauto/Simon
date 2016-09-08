@@ -40,37 +40,37 @@ $("#display").val("Oops!");
       case "r":
       setTimeout(function(){
       audio1.play();
-      $("#red").css( "background-color","red" );
+      $(".red").css( "background-color","red" );
       }, time);
       setTimeout(function(){
-      $("#red").css("background-color", "#660000");
+      $(".red").css("background-color", "#660000");
     }, time+400);
           break;
       case "b":
       setTimeout(function(){
       audio2.play();
-      $("#blue").css( "background-color","blue" );
+      $(".blue").css( "background-color","blue" );
       }, time);
       setTimeout(function(){
-      $("#blue").css("background-color", "#000066");
+      $(".blue").css("background-color", "#000066");
     }, time+400);
           break;
       case "y":
       setTimeout(function(){
       audio3.play();
-      $("#yellow").css( "background-color","yellow" );
+      $(".yellow").css( "background-color","yellow" );
       }, time);
       setTimeout(function(){
-      $("#yellow").css("background-color", "#666600");
+      $(".yellow").css("background-color", "#666600");
     }, time+400);
           break;
       case "g":
       setTimeout(function(){
       audio4.play();
-      $("#green").css( "background-color","#00ff00" );
+      $(".green").css( "background-color","#00ff00" );
       }, time);
       setTimeout(function(){
-      $("#green").css("background-color", "#006600");
+      $(".green").css("background-color", "#006600");
     }, time+400);
        }
 
@@ -90,6 +90,16 @@ $("#display").val("Oops!");
 
 function startButton(){
   if(onOff == "off"){return;}
+
+  $("#red").addClass("red");
+  $("#blue").addClass("blue");
+  $("#yellow").addClass("yellow");
+  $("#green").addClass("green");
+  audio1 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+  audio2 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+  audio3 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+  audio4 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+
     arr = [];
     //generate a random 20 sequence pattern
     for(i=0;i<20;i++){
@@ -131,6 +141,7 @@ function nextTurn(){
  }
  if(turnNum == 21){
    $("#display").val("You win!");
+   reset();
  }
 }
 
@@ -141,11 +152,11 @@ function red(){
       //make sound light up
       $( "#red" )
         .mouseup(function() {
-          $("#red").css( "background-color", "#660000" );
+          $(".red").css( "background-color", "#660000" );
         })
         .mousedown(function() {
           audio1.play();
-          $("#red").css( "background-color","red" );
+          $(".red").css( "background-color","red" );
         });
 
 
@@ -185,11 +196,11 @@ function blue(){
       //light up
       $( "#blue" )
         .mouseup(function() {
-          $("#blue").css( "background-color", "#000066" );
+          $(".blue").css( "background-color", "#000066" );
         })
         .mousedown(function() {
           audio2.play();
-          $("#blue").css( "background-color","blue" );
+          $(".blue").css( "background-color","blue" );
         });
 
       if(turnArr[0] == "b"){
@@ -226,11 +237,11 @@ function yellow(){
       //make sound
       $( "#yellow" )
         .mouseup(function() {
-          $("#yellow").css( "background-color", "#666600" );
+          $(".yellow").css( "background-color", "#666600" );
         })
         .mousedown(function() {
           audio3.play();
-          $("#yellow").css( "background-color","yellow" );
+          $(".yellow").css( "background-color","yellow" );
         });
       //light up
       if(turnArr[0] == "y"){
@@ -266,11 +277,11 @@ function green(){
       //make sound and light up
       $( "#green" )
         .mouseup(function() {
-          $("#green").css( "background-color", "#006600" );
+          $(".green").css( "background-color", "#006600" );
         })
         .mousedown(function() {
           audio4.play();
-          $("#green").css( "background-color","#00ff00" );
+          $(".green").css( "background-color","#00ff00" );
         });
 
       if(turnArr[0] == "g"){
@@ -305,6 +316,9 @@ function on(){
   else{onOff = "off"; }
   //panels light up and make a sound
   if(onOff=="on"){
+
+
+
       $("#start").css("color","#00ff00");
 
       $("#slideTwo").removeAttr("disabled");
@@ -346,6 +360,18 @@ function on(){
       $("#slideTwo").attr("disabled", true);
       $('#slideTwo').attr('checked', false); // Unchecks it
 
+      //work around for bug where buttons work after turning off
+      $("#red").removeClass("red");
+      $("#blue").removeClass("blue");
+      $("#yellow").removeClass("yellow");
+      $("#green").removeClass("green");
+      audio1 = "";
+      audio2 = "";
+      audio3 = "";
+      audio4 = "";
+
+
+
   }
 }
 
@@ -364,41 +390,41 @@ $("#hard").click(function(){
 });
 $( "#red" )
   .mouseup(function() {
-    $("#red").css( "background-color", "#660000" );
+    $(".red").css( "background-color", "#660000" );
   })
   .mousedown(function() {
     if(onOff == "on" && playerTurn == true){
       audio1.play();
-       $("#red").css( "background-color","red" );
+       $(".red").css( "background-color","red" );
     }
   });
   $( "#blue" )
     .mouseup(function() {
-      $("#blue").css( "background-color", "#000066" );
+      $(".blue").css( "background-color", "#000066" );
     })
     .mousedown(function() {
     if(onOff == "on" && playerTurn == true){
      audio2.play();
-      $("#blue").css( "background-color","blue" );
+      $(".blue").css( "background-color","blue" );
     }
     });
     $( "#yellow" )
       .mouseup(function() {
-        $("#yellow").css( "background-color", "#666600" );
+        $(".yellow").css( "background-color", "#666600" );
       })
       .mousedown(function() {
             if(onOff == "on"  && playerTurn == true){
         audio3.play();
-        $("#yellow").css( "background-color","yellow" );
+        $(".yellow").css( "background-color","yellow" );
       }
       });
       $( "#green" )
         .mouseup(function() {
-          $("#green").css( "background-color", "#006600" );
+          $(".green").css( "background-color", "#006600" );
         })
         .mousedown(function() {
               if(onOff == "on" && playerTurn == true){
           audio4.play();
-          $("#green").css( "background-color","#00ff00" );
+          $(".green").css( "background-color","#00ff00" );
         }
         });
