@@ -14,8 +14,19 @@ var strictMode = false;
 var turnNum = "0";
 var playerTurn = false;
 
-function compPlay(oops){
-if(oops == "oops"){
+function reset(){
+  //full 20 sequence array
+  arr = [];
+  //sub array of arr based on the turn
+  subArr = [];
+  //starts as subArr and elements shift off as turn goes on.
+  turnArr = [];
+  turnNum = "0";
+  playerTurn = false;
+}
+
+function compPlay(message){
+if(message == "oops"){
 $("#display").val("Oops!");
 }
    var time = 500;
@@ -69,6 +80,9 @@ $("#display").val("Oops!");
   setTimeout(function(){
     playerTurn = true;
     $("#display").val("Turn: " + turnNum);
+    //This is meant to deal with case where user turns off while
+    //computer is performing the sequence.
+    if(onOff == "off"){$("#display").val("--"); playerTurn = false;}
   }, (subArr.length)*700)
 
 }
@@ -148,6 +162,7 @@ function red(){
       else{
         if(strictMode == true){
         $("#display").val("Game Over");
+        reset();
         return;
         }
         playerTurn = false;
@@ -190,6 +205,7 @@ function blue(){
       else{
         if(strictMode == true){
         $("#display").val("Game Over");
+        reset();
         return;
         }
         playerTurn = false;
@@ -230,6 +246,7 @@ function yellow(){
       else{
         if(strictMode == true){
         $("#display").val("Game Over");
+        reset();
         return;
         }
         playerTurn = false;
@@ -238,7 +255,6 @@ function yellow(){
         turnArr = subArr.slice();
         //play the sequence
         compPlay("oops");
-              //  $("#display").val("Turn: " + turnNum);
         return;
       }
 
@@ -247,7 +263,7 @@ function yellow(){
 function green(){
   //don't allow user to play until ready.
   if(playerTurn == false){return;}
-      //make sound
+      //make sound and light up
       $( "#green" )
         .mouseup(function() {
           $("#green").css( "background-color", "#006600" );
@@ -256,7 +272,7 @@ function green(){
           audio4.play();
           $("#green").css( "background-color","#00ff00" );
         });
-      //light up
+
       if(turnArr[0] == "g"){
           //shift off 0 index
           turnArr.shift();
@@ -270,16 +286,16 @@ function green(){
       else{
         if(strictMode == true){
         $("#display").val("Game Over");
+        //reset game!
+        reset();
         return;
         }
         playerTurn = false;
-
         $("#display").val("Oops!");
         //reset turnArr
         turnArr = subArr.slice();
         //play the sequence
         compPlay("oops");
-        //$("#display").val("Turn: " + turnNum);
         return;
       }
 }
@@ -289,6 +305,9 @@ function on(){
   else{onOff = "off"; }
   //panels light up and make a sound
   if(onOff=="on"){
+      $("#start").css("color","#00ff00");
+
+      $("#slideTwo").removeAttr("disabled");
     //display
       $("#display").css("color", "red");
       $("#display").val("Hello!");
@@ -317,20 +336,30 @@ function on(){
   }
   //turn off machine
   if(onOff=="off"){
+      reset();
+      strictMode = false;
+      $("#hard").css("color","#000000");
+      $("#start").css("color","#000000");
       $("#display").css("color", "#333");
       $("#display").val("--");
       //reset variables
+      $("#slideTwo").attr("disabled", true);
+      $('#slideTwo').attr('checked', false); // Unchecks it
+
   }
 }
 
-$('#roundedOne').click(function(){
-    if (this.checked && onOff == "on") {
-        $("#display").val("Hard!")
+$("#hard").click(function(){
+    if (strictMode == false && onOff == "on") {
+        $("#display").val("Hard!");
+        $("#hard").css("color", "red");
+        strictMode = true;
     }
-    if(this.checked){
+    else if(strictMode == true && onOff == "on"){
+      $("#display").val("Easy!")
+      $("#hard").css("color", "#000");
+      strictMode = false;
 
-    strictMode = true;
-          alert(strictMode);
     }
 });
 $( "#red" )
@@ -338,7 +367,7 @@ $( "#red" )
     $("#red").css( "background-color", "#660000" );
   })
   .mousedown(function() {
-    if(onOff == "on"){
+    if(onOff == "on" && playerTurn == true){
       audio1.play();
        $("#red").css( "background-color","red" );
     }
@@ -348,7 +377,7 @@ $( "#red" )
       $("#blue").css( "background-color", "#000066" );
     })
     .mousedown(function() {
-    if(onOff == "on"){
+    if(onOff == "on" && playerTurn == true){
      audio2.play();
       $("#blue").css( "background-color","blue" );
     }
@@ -358,7 +387,7 @@ $( "#red" )
         $("#yellow").css( "background-color", "#666600" );
       })
       .mousedown(function() {
-            if(onOff == "on"){
+            if(onOff == "on"  && playerTurn == true){
         audio3.play();
         $("#yellow").css( "background-color","yellow" );
       }
@@ -368,7 +397,7 @@ $( "#red" )
           $("#green").css( "background-color", "#006600" );
         })
         .mousedown(function() {
-              if(onOff == "on"){
+              if(onOff == "on" && playerTurn == true){
           audio4.play();
           $("#green").css( "background-color","#00ff00" );
         }
