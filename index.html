@@ -7,46 +7,32 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-
-
 <div class="holder">
-    <div class="red"></div>
-    <div class="blue"></div>
-    <div class="yellow"></div>
-    <div class="green"></div>
+    <div id="red" onclick="red()"></div>
+    <div id="blue" onclick="blue()"></div>
+    <div id="yellow" onclick="yellow()"></div>
+    <div id="green" onclick="green()"></div>
 </div>
-
     <div class="inner">
-
       <div class="row">
-                <button type="button" name="button" class="btn btn-primary" onclick="onIt()">Start</button>
-        <!-- .roundedOne -->
+        <button type="button" name="button" class="btn btn-primary" onclick="startButton()">Start</button>
         <div class="roundedOne">
-          <input type="checkbox" value="None" id="roundedOne" name="check" checked />
+          <input type="checkbox" value="None" id="roundedOne" name="check" />
           <label for="roundedOne"></label>
         </div>
-        <!-- end .roundedOne -->
-        <input type="text" name="count" value="--" disabled="disabled">
-
-
+        <input type="text" name="count" value="--" disabled="disabled" id="display">
       </div>
       <div class="row">
-      <center>
-        <section title=".slideThree">
-            <!-- .slideThree -->
-            <div class="slideThree" >
-              <input type="checkbox" value="None" id="slideThree" name="check"  />
-              <label for="slideThree" ></label>
-            </div>
-            <!-- end .slideThree -->
-          </section>
-      </center>
+        <div class="slideThree" >
+          <input type="checkbox" value="None" id="slideThree" name="check"   onclick="on()"/>
+          <label for="slideThree" ></label>
+        </div>
       </div>
     </div>
-
-
+    <div id="full"></div>
+    <div id="partial"></div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

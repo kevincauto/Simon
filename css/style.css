@@ -30,7 +30,7 @@ input[type=text] {
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
-.red{
+#red{
   position:absolute;
   top: 10px; left:0;
   background-color: #660000;
@@ -43,7 +43,7 @@ input[type=text] {
   margin-right:0px;
 
 }
-.blue{
+#blue{
   position:absolute;
   top: 10px; left:230px;
   background-color: #000066;
@@ -54,7 +54,7 @@ input[type=text] {
   border-width: 20px;
   display: inline-block;
 }
-.yellow{
+#yellow{
   position:absolute;
   top: 240px; left:0px;
   background-color: #666600;
@@ -65,7 +65,7 @@ input[type=text] {
   border-width: 20px;
   display: inline-block;
 }
-.green{
+#green{
   position:absolute;
   top: 240px; left:230px;
   background-color: #006600;
@@ -81,4 +81,7 @@ input[type=text] {
   height:512px;
   postion: absolute;
   left:250px;
+}
+#full{
+  font-size:24px;
 }
